@@ -6,7 +6,12 @@ module.exports = {
       let Discord = require('discord.js')
       if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`Bu komutu kullanabilmek için **Kanalları Yönet** iznine sahip olmalısın!`);
     
-    message.channel.owerwritePermissions({ 'SEND_MESSAGES': false }, 'Kanal kilitlendi. Yetkili:'+message.author.tag);
+      
+ const role = message.guild.roles.find("name", "everyone ");
+
+message.channel.overwritePermissions(role,{ 'SEND_MESSAGES': false })     
+      
+ 
     message.channel.send('Komut başarılı!')
     
     }
@@ -21,3 +26,9 @@ module.exports = {
   
   
 }
+  
+  
+  
+  
+  
+  

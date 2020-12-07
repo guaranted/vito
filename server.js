@@ -789,4 +789,4 @@ client.on('message', async msg => {
 
 
   
-client.login('NzcxNjc0ODA0OTA5NjM3NjMy.X5vkKg.CGjxJj2yU4AjlHTrM1XzcVf55PU');
+client.login('process.env.TOKEN');

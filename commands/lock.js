@@ -9,7 +9,7 @@ module.exports = {
       
  const role = message.guild.roles.find("name", "everyone ");
 
-message.channel.overwritePermissions(role,{ 'SEND_MESSAGES': false })     
+role.permissions.remove('SEND_MESSAGES')  
       
  
     message.channel.send('Komut başarılı!')
@@ -26,9 +26,5 @@ message.channel.overwritePermissions(role,{ 'SEND_MESSAGES': false })
   
   
 }
-  
-  
-  
-  
   
   

@@ -1,0 +1,26 @@
+module.exports = {
+    name: 'moderasyon',
+    description: "Ping - Pong komutudur.",
+    execute(message, args){
+      
+let Discord = require('discord.js')
+let {MessageEmbed} = require('discord.js')
+  const berke = "Komut "  + message.author.username + " tarafından çalıştırıldı";
+  const karpuz =  message.author.displayAvatarURL({dynamic: true});
+
+  let embed = new MessageEmbed()
+  .setAuthor('Moderasyon Komutları')
+      .setColor('RANDOM')
+  .addField('!ban', 'Kişiyi sunucudan yasaklar')
+  .addField('!kick', 'Kişiyi sunucudan atar')
+  .addField('!warn1/!warn2/!warn3', 'Kişiye uyarı rolleri verir')
+  .addField('!mute', 'Kişiyi susturur')
+  .addField('!slowmode', 'Kanala slowmode koyar')
+  .addField('!temizle', 'Belirttiğiniz kadar mesaj siler')
+  .addField('!emoji-ekle', 'Sunucuya emoji ekler')
+  .addField('!isim', 'Belirttiğiniz kişinin ismini değiştirir')
+     .setFooter(berke, karpuz)
+      message.channel.send(embed)
+      
+    }
+}

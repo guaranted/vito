@@ -6,7 +6,8 @@ module.exports = {
       let Discord = require('discord.js')
       if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`Bu komutu kullanabilmek için **Kanalları Yönet** iznine sahip olmalısın!`);
     
-      
+        
+const { MessageEmbed } = require('discord.js');
  const channels = message.guild.channels.cache.filter(ch => ch.type !== 'category');
         if (args[0] === 'on') {
             channels.forEach(channel => {

@@ -7,24 +7,27 @@ module.exports = {
       if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`Bu komutu kullanabilmek için **Kanalları Yönet** iznine sahip olmalısın!`);
     
       
- const role = message.guild.roles.find("name", "everyone ");
-
-role.permissions.remove('SEND_MESSAGES')  
-      
- 
-    message.channel.send('Komut başarılı!')
-    
+ const channels = message.guild.channels.cache.filter(ch => ch.type !== 'category');
+        if (args[0] === 'on') {
+            channels.forEach(channel => {
+                channel.updateOverwrite(message.guild.roles.everyone, {
+                    SEND_MESSAGES: false
+                }).then(() => {
+                    channel.setName(channel.name += `🔒`)
+                })
+            })
+            return message.channel.send('locked all channels');
+        } else if (args[0] === 'off') {
+            channels.forEach(channel => {
+                channel.updateOverwrite(message.guild.roles.everyone, {
+                    SEND_MESSAGES: true
+                }).then(() => {
+                        channel.setName(channel.name.replace('🔒', ''))
+                    }
+                )
+            })
+            return message.channel.send('unlocked all channels')
+        }
     }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }
-  
   
